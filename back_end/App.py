@@ -41,7 +41,7 @@ def handle_message(data):
         predictions=model.predict(features)
         print(predictions[0])
         response = [int(predictions[0])]
-        socketio.emit('foo',response)
+        socketio.emit('dataFetch',response)
         time.sleep(1)
     
 

@@ -42,29 +42,6 @@ function Details() {
             <p>this is a test right</p>
             <p>this is a test right</p>
             <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
-            <p>this is a test right</p>
           </div>
         </div>
       </div>
