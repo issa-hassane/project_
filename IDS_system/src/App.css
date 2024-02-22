@@ -1,0 +1,21 @@
+.scrollbar::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+  background-color: #1bcbbd;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+  /* background-color: #f1f1f1;
+  border-radius: 18px; */
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  /* Color of the scrollbar thumb on hover */
+  background: rgba(0, 0, 0, 0.4);
+}
