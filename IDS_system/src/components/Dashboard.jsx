@@ -7,7 +7,7 @@ import { Events } from "./Events";
 import { MyForm } from "./MyForm";
 
 function Dashboad() {
-  const [status, setStatus] = useState("normal");
+  const [status, setStatus] = useState("attack");
   const [isActive, setIsActive] = useState(1);
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [DataFetchEvent, setDataFetchEvent] = useState([]);
@@ -59,7 +59,7 @@ function Dashboad() {
         <ConnectionState isConnected={isConnected} />
         <Events events={DataFetchEvent} />
         {/* <MyForm /> */}
-        <div className="w-[400px] mx-auto">
+        <div className="w-[400px] mx-auto mb-4">
           <div className="pt-2 border-b border-gray-300 grid grid-cols-2 w">
             <button
               onClick={() => toggleTab(1)}

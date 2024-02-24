@@ -12,7 +12,7 @@ function Details() {
         <div className="grid grid-rows-9 h gap-3 ">
           {/* rows */}
           <div className="row-span-5 ">
-            <div className="scrollbar p-8 rounded-lg shadow-lg backdrop-blur-md bg-white/25 text-black h-72 overflow-y-auto">
+            <div className="scrollbar p-8  ring-1 ring-red-500 rounded-lg shadow-lg backdrop-blur-md bg-white/25 text-black h-72 overflow-y-auto">
               <p>this is a test left</p>
               <p>this is a test left</p>
               <p>this is a test left</p>
@@ -29,7 +29,7 @@ function Details() {
                 <AlertOctagon className="w-1/2 h-1/2" />
               </div>
 
-              <p className="text-3xl font-semibold">3</p>
+              <p className="text-3xl font-semibold">0</p>
               <p className="text-3xl">ALARME</p>
             </div>
             {/* </div> */}
@@ -37,7 +37,7 @@ function Details() {
         </div>
         {/* second col right side*/}
         <div className="h-full">
-          <div className="scrollbar p-8 rounded-lg shadow-lg backdrop-blur-md bg-white/25 text-black h-[34rem] overflow-y-auto">
+          <div className="scrollbar p-8 font-mono rounded-lg shadow-lg backdrop-blur-md bg-white/25 text-black h-[34rem] overflow-y-auto">
             <p>this is a test right</p>
             <p>this is a test right</p>
             <p>this is a test right</p>

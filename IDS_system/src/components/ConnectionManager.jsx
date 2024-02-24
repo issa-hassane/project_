@@ -21,6 +21,9 @@ export function ConnectionManager() {
         title: "Success !!",
         description: "Successfully connnect to the server",
       });
+      socket.timeout(5000).emit("create-something", "send data", () => {
+        setIsLoading(false);
+      });
     });
     socket.on("connect_error", (error) => {
       //  handle the error here
