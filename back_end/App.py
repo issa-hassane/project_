@@ -26,7 +26,7 @@ def handle_message():
 def handle_message():
     print('disconnected !')
 
-@socketio.on('create-something')
+@socketio.on('dataFetch')
 def handle_message(data):
     import time
     model = pickle.load(open('model.pkl','rb'))
