@@ -21,7 +21,7 @@ export function ConnectionManager() {
         title: "Success !!",
         description: "Successfully connnect to the server",
       });
-      socket.timeout(5000).emit("create-something", "send data", () => {
+      socket.emit("dataFetch", "send data", () => {
         setIsLoading(false);
       });
     });

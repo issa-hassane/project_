@@ -59,7 +59,7 @@ export default function UserAuthForm({ className, ...props }) {
                   disabled={isLoading}
                 />
               </div>
-              <Button disabled={isLoading}>
+              <Button disabled={isLoading} className="mt-4">
                 {isLoading && (
                   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                 )}
