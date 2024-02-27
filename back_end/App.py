@@ -40,9 +40,16 @@ def handle_message(data):
         
         predictions=model.predict(features)
         print(predictions[0])
-        response = [int(predictions[0])]
+        status = ""
+        if predictions[0] == 1:
+            status="attack"
+        else:
+            status="normal"
+
+        response = {"predicted": int(predictions[0]),"status": status }
+
         socketio.emit('dataFetch',response)
-        time.sleep(1)
+        time.sleep(2)
     
 
 

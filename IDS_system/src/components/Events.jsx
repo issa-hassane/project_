@@ -5,7 +5,8 @@ export function Events({ events }) {
     <ul className="bg-red-600 text-black z-50">
       {events.map((event, index) => (
         <li className="bg-yellow-300 text-black" key={index}>
-          {event}
+          <p>predicted: {event.predicted}</p>
+          <p>status: {event.status}</p>
         </li>
       ))}
     </ul>

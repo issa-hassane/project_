@@ -26,10 +26,10 @@ function Dashboad() {
     }
 
     function onDataFetchEvent(value) {
-      console.log(value);
+      // console.log(value);
+      console.log(DataFetchEvent);
       setDataFetchEvent((previous) => [...previous, value]);
     }
-    console.log(DataFetchEvent);
 
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
@@ -42,7 +42,7 @@ function Dashboad() {
       socket.off("dataFetch", onDataFetchEvent);
       // socket.off("data-steam", onFooEvent);
     };
-  }, []);
+  }, [DataFetchEvent]);
 
   let bgColor = "";
   if (status == "normal") {
@@ -57,7 +57,7 @@ function Dashboad() {
     <>
       <div className={`text-white h-screen pt-4 relative ${bgColor}`}>
         <ConnectionState isConnected={isConnected} />
-        {/* <Events events={DataFetchEvent} /> */}
+        <Events events={DataFetchEvent} />
         {/* <MyForm /> */}
         <div className="w-[400px] mx-auto mb-4">
           <div className="pt-2 border-b border-gray-300 grid grid-cols-2 w">
