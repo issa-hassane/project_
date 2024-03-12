@@ -7,7 +7,7 @@ import { Events } from "./Events";
 import { MyForm } from "./MyForm";
 
 function Dashboad() {
-  const [status, setStatus] = useState("normal");
+  const [status, setStatus] = useState("");
   const [isActive, setIsActive] = useState(1);
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [DataFetchEvent, setDataFetchEvent] = useState([]);
@@ -17,17 +17,25 @@ function Dashboad() {
   };
 
   useEffect(() => {
+    const filteredResult = DataFetchEvent?.filter((e) => e.predicted == 1);
+    // setAttacks(filteredResult);
+    if (filteredResult.length != 0) {
+      setStatus("attack");
+    }
+
     function onConnect() {
       setIsConnected(true);
+      setStatus("normal");
     }
 
     function onDisconnect() {
       setIsConnected(false);
+      setStatus("");
     }
 
     function onDataFetchEvent(value) {
       // console.log(value);
-      console.log(DataFetchEvent);
+      // console.log(DataFetchEvent);
       setDataFetchEvent((previous) => [...previous, value]);
     }
 
@@ -50,14 +58,14 @@ function Dashboad() {
   } else if (status == "attack") {
     bgColor = "bg-gradient-to-t from-red-600 via-red-500 to-red-600";
   } else {
-    bgColor = "bg-gradient-to-t from-amber-500 via-yellow-300 to-amber-500";
+    bgColor = "bg-gradient-to-t from-amber-600 via-yellow-400 to-amber-600";
   }
 
   return (
     <>
       <div className={`text-white h-screen pt-4 relative ${bgColor}`}>
         <ConnectionState isConnected={isConnected} />
-        <Events events={DataFetchEvent} />
+        {/* <Events events={DataFetchEvent} /> */}
         {/* <MyForm /> */}
         <div className="w-[400px] mx-auto mb-4">
           <div className="pt-2 border-b border-gray-300 grid grid-cols-2 w">
@@ -82,7 +90,9 @@ function Dashboad() {
         {/* icon  */}
 
         {isActive === 1 && <Status condition={status} />}
-        {isActive === 2 && <Details />}
+        {isActive === 2 && (
+          <Details events={DataFetchEvent} setStatus={setStatus} />
+        )}
       </div>
     </>
   );

@@ -31,13 +31,13 @@ function ShowIcon({ condition }) {
   } else {
     return (
       <>
-        <div className="absolute w-[38rem] h-[38rem] mt-6">
+        {/* <div className="absolute w-[38rem] h-[38rem] mt-6">
           <Lottie className="" options={defaultOptions} />
-        </div>
-        <AlertCircle
-          className="absolute top-50 w-60 h-60 z-30"
-          color="yellow"
-        />
+        </div> */}
+        <AlertCircle className="absolute top-16 w-48 h-48 z-30" color="white" />
+        <h2 className="text-3xl font-mono">
+          Please connect to the server in Details tab
+        </h2>
       </>
     );
   }
