@@ -5,28 +5,29 @@ import { buttonVariants } from "@/components/ui/button";
 import LoginForm from "./LoginForm";
 import { useState } from "react";
 import RegisterForm from "./RegisterForm";
+import robot from "../assets/robot.svg";
 
 export default function Login2() {
   const [authForm, setAuthForm] = useState("login");
   return (
     <>
-      <div className="md:hidden">
+      {/* <div className="hidden md:block">
         <img
-          src="/examples/authentication-light.png"
+          src={robot}
           width={1280}
           height={843}
           alt="Authentication"
           className="block dark:hidden"
         />
         <img
-          src="/examples/authentication-dark.png"
+          src={robot}
           width={1280}
           height={843}
           alt="Authentication"
           className="hidden dark:block"
         />
-      </div>
-      <div className="container relative hidden flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0 h-screen">
+      </div> */}
+      <div className="container mt-24 md:mt-0 relative flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0 h-screen">
         {/* <Link
           href="/examples/authentication"
           className={cn(
@@ -42,6 +43,11 @@ export default function Login2() {
             <Radar size={38} />
             <p>CyberRadar</p>
           </div>
+          <img
+            src={robot}
+            className="z-40 w-1/2 absolute top-[22%] left-[20%]"
+            alt="Authentication"
+          />
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg">
