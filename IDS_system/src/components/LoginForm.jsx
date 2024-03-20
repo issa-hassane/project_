@@ -1,22 +1,41 @@
-import * as React from "react";
-
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/ui/Icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function UserAuthForm({ className, ...props }) {
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [notice, setNotice] = useState("");
 
   async function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
-
-    setTimeout(() => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/dashboard");
       setIsLoading(false);
-    }, 3000);
+    } catch (e) {
+      setNotice("You entered a wrong username or password.");
+      console.log("something went wrong");
+      // console.log(e);
+      console.log("debug", email, password);
+      setIsLoading(false);
+    }
+
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    // }, 3000);
   }
 
   return (
@@ -43,6 +62,8 @@ export default function UserAuthForm({ className, ...props }) {
                   autoComplete="email"
                   autoCorrect="off"
                   disabled={isLoading}
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 />
               </div>
               <div className="grid gap-1">
@@ -57,6 +78,8 @@ export default function UserAuthForm({ className, ...props }) {
                   autoComplete="password"
                   autoCorrect="off"
                   disabled={isLoading}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <Button disabled={isLoading} className="mt-4">

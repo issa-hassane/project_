@@ -1,22 +1,41 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Status from "./Status";
 import Details from "./Details";
 import { socket } from "../socket";
 import { ConnectionState } from "./ConnectionState";
 import { Events } from "./Events";
 import { MyForm } from "./MyForm";
-
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 function Dashboad() {
   const [status, setStatus] = useState("");
+  const [LoggedinUser, setLoggedinUser] = useState(null);
   const [isActive, setIsActive] = useState(1);
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [DataFetchEvent, setDataFetchEvent] = useState([]);
+  const navigate = useNavigate();
 
   const toggleTab = (tab) => {
     setIsActive(tab);
   };
 
   useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // ...
+        setLoggedinUser(user);
+        console.log("uid", uid);
+      } else {
+        // User is signed out
+        navigate("/");
+        // ...
+        console.log("user is logged out");
+      }
+    });
     const filteredResult = DataFetchEvent?.filter((e) => e.predicted == 1);
     // setAttacks(filteredResult);
     if (filteredResult.length != 0) {

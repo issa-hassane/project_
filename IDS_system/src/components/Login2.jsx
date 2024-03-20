@@ -1,14 +1,24 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Radar } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+// import { cn } from "@/lib/utils";
+// import { buttonVariants } from "@/components/ui/button";
 import LoginForm from "./LoginForm";
 import { useState } from "react";
 import RegisterForm from "./RegisterForm";
 import robot from "../assets/robot.svg";
 
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+
 export default function Login2() {
   const [authForm, setAuthForm] = useState("login");
+
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [notice, setNotice] = useState("");
+
   return (
     <>
       {/* <div className="hidden md:block">
@@ -45,7 +55,8 @@ export default function Login2() {
           </div>
           <img
             src={robot}
-            className="z-40 w-1/2 absolute top-[22%] left-[20%]"
+            className="z-40 w-1/2 absolute top-[22%] left-[22%] transform transition duration-1000 
+            hover:scale-110 "
             alt="Authentication"
           />
           <div className="relative z-20 mt-auto">

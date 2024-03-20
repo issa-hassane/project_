@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ListTodo, LogOut, Radar, CloudOff } from "lucide-react";
 import { ConnectionManager } from "./ConnectionManager";
-
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
 function SideBar() {
+  const navigate = useNavigate();
+  const user = auth.currentUser;
+
+  const logoutUser = async (e) => {
+    e.preventDefault();
+
+    await signOut(auth);
+    navigate("/");
+  };
   return (
     <>
       <div className="absolute top-0 w-64 py-5 h-screen bg-slate-900">
@@ -13,7 +23,7 @@ function SideBar() {
         <ul className="drop-shadow-md space-y-3">
           <li className="p-2 ps-4 w-full space-x-4 flex hover:bg-sky-500/20 hover:border-s-4 hover:border-sky-500 transition-all">
             <ListTodo />
-            <Link>Status</Link>
+            <Link className="w-full text-start">Status</Link>
           </li>
           {/* <li className="p-2 ps-4 w-full space-x-4 flex hover:bg-sky-500/20 hover:border-s-4 hover:border-sky-500 transition-all">
             <CloudOff />
@@ -21,7 +31,13 @@ function SideBar() {
           </li> */}
           <li className="p-2 ps-4 w-full space-x-4 flex hover:bg-sky-500/20 hover:border-s-4 hover:border-sky-500 transition-all">
             <LogOut />
-            <Link>Logout</Link>
+            <button
+              className="w-full text-start"
+              type="submit"
+              onClick={(e) => logoutUser(e)}
+            >
+              Logout
+            </button>
           </li>
         </ul>
         {/* bottom side */}

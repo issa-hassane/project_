@@ -11,8 +11,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <BrowserRouter>
         <App />
-        <Toaster />
       </BrowserRouter>
+      <Toaster />
     </ThemeProvider>
   </React.StrictMode>
 );
