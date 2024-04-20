@@ -17,14 +17,18 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, cors_allowed_origins="http://localhost:5173")
 
 # df.head(5)
-
+connection_alive = True
 @socketio.on('connect')
 def handle_message():
     print('connected !')
+    global connection_alive
+    connection_alive = True
 
 @socketio.on('disconnect')
 def handle_message():
     print('disconnected !')
+    global connection_alive
+    connection_alive = False
 
 @socketio.on('dataFetch')
 def handle_message(data):
@@ -35,6 +39,9 @@ def handle_message(data):
     print('Foo event received:', data)
     
     for index, row in df.iterrows():
+        global connection_alive
+        if not connection_alive:
+            break  # Exit the loop if the connection is no longer alive
        
         features = row.drop('Label').values.reshape(1, -1)
         
